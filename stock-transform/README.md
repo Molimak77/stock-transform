@@ -26,196 +26,104 @@ pip install git+https://github.com/jkbr/httpie.git#egg=httpie
 ```
 ### Usage
 
-""" Extra_data_stock : class to provide the method to loading the data from the yahoo finance  
+ Use Extra_data_stock : class to provide the method to loading the data from the yahoo finance  
 
-Params:
-------
-tiker: str, the name of the symbole  
-start: the date to start default, default: "2000-01-01", 
-end_date: The date of the end, default: now
+```python
+>>> from stock_transform import stock_preprocess as stp
+>>> obj_extra_data_stock = stp.Extra_data_stock("AAPL")
+```
 
-Usage: 
-------
+Use the class load_data_stock : the method of the class Extra_data_stock which to provide  load the data of the stock market  
 
->>> obj_extra_data_stock = Extra_data_stock("AAPL")
-
-"""
-
-""" load_data_stock : the method of the class Extra_data_stock which to provide  load the data of the stock market  
-
-Params:
-------
-
-self: object of the class Extra_data_stock
-
-Usage:
------
-
->>> obj_extra_data_stock = Extra_data_stock("AAPL")
+```python
+>>> from stock_transform import stock_preprocess as stp
+>>> obj_extra_data_stock = stp.Extra_data_stock("AAPL")
 >>> df = obj_extra_data_stock.load_data_stock()
 >>> df.head()
+```
 
-"""
-
-""" load_ndata_prediction: the method of the class Extra_data_stock which to provide
+Use the method load_ndata_prediction: the method of the class Extra_data_stock which to provide
 load the prediction data (the n last days)
 
-Params:
-------
-timestep : the prediction periode
-nlast_prediction_days : the n last day of the prediction
-
-Usage:
------ 
-
->>> obj_extra_data_stock = Extra_data_stock("AAPL")
+```python
+>>> from stock_transform import stock_preprocess as stp
+>>> obj_extra_data_stock = stp.Extra_data_stock("AAPL")
 >>> df = obj_extra_data_stock.load_ndata_prediction(90,9)
 >>> df.head()
+```
 
-"""
+Use Vector_stock : the class to provide the methodes to manipulate the list of the stock tickers
 
-""" Vector_stock : the class to provide the methodes to manipulate the list of the stock tickers
-
-Params:
--------
-list_data : the list containing the values of the stock ticker on the market
-step : the periode which considerate as the memory of the time series 
-
-Usage:
------
-
+```python
+>>> from stock_transform import stock_preprocess as stp
 >>> values_list = [1, 4, 8, 0, 7, 5, 23, 45, 7, 99, 66, 8, 12, 24]
->>> objet_vector_stock = Vector_stock(values_list, 4)
+>>> objet_vector_stock = stp.Vector_stock(values_list, 4)
+```
 
-"""
+Use Vector_stock : the class that treates the list of the data (stock ticker of the market)
 
-""" Vector_stock : the class that treates the list of the data (stock ticker of the market)
-
-Params:
-------
-list_data: the list of the data 
-step: the len of the periode
-
-Usage:
-------
-
+```python
+>>> from stock_transform import stock_preprocess as stp
 >>> lst_vector_data = [1, 4, 8, 0, 7, 5, 23, 45, 7, 99, 66, 8, 12 , 24]
->>> obj = Vector_stock(lst_vector_data, 4)
+>>> obj = stp.Vector_stock(lst_vector_data, 4)
 >>> len(obj) 
 >>> obj[0]
 >>> obj[3] = [11, 22, 44, 33]
 >>> print(obj)
 >>> for uu in obj:
     print(uu)
+```
 
-"""
+Use Transform_stock : the class which transforms the data stock as matrix of the aviriables 
 
-
-"""Transform_stock : the class which transforms the data stock as matrix of the aviriables 
-
-Params:
-------
-list_data: list contains the value of the stock ticker
-step: the timestep or the memory of the time series
-
-Usage:
------
-
+```python
+>>> from stock_transform import stock_preprocess as stp
 >>> lst_vector_data = [1, 4, 8, 0, 7, 5, 23, 45, 7, 99, 66, 8, 12 , 24]
+>>> objet_vector_stock = stp.Vector_stock(lst_vector_data, 4)
+```
+Use get_y_X_stock: method of the class Transform_stock which extracts the matrix X and the outcom y of data
 
-"""
-
-""" get_y_X_stock: method of the class Transform_stock which extracts the matrix X and the outcom y of data
-
-Params:
--------
-self: the object of the class Transform_stock
-i: the rank of the to extract the y 
-
-Usage:
-------
-
->>> obj1 = Transform_stock(lst_vector_data,4)
->>> obj2 = Transform_stock(lst_vector_data,4)
+```python
+>>> from stock_transform import stock_preprocess as stp
+>>> obj1 = stp.Transform_stock(lst_vector_data,4)
+>>> obj2 = stp.Transform_stock(lst_vector_data,4)
 >>> new_obj = obj1 + obj2
 >>> new_obj = new_obj.Xmatrix_3D
 >>> y_train, X_train = new_obj.get_y_X_stock() 
 
-"""
+```
 
-"""Stock_processing : class which provides transformation of the stock ticker variable 
+Use Stock_processing : class which provides transformation of the stock ticker variable 
 
-Params:
-------
-tiker : symbol of the tiker on the market
-start : the date to starting the load the historical data of a stock ticker 
-end_date : the date of the end of the data hystory 
-
-Usage:
------
-
+```python
+>>> from stock_transform import stock_preprocess as stp
 >>> obj_stock = Stock_processing('AAPL', start="2023-01-01", end_date="2023-03-01")
+```
 
-"""
+Use stock_market_data: the method of the class Stock_processing to loading the historical data 
 
-"""stock_market_data: the method of the class Stock_processing to loading the historical data 
-
-Params:
-------
-
-self: object of the Stock_processing
-
-Usage:
-------
-
+```python
+>>> from stock_transform import stock_preprocess as stp
 >>> dico_obj_stock = obj_stock.stock_market_data()
+```
 
-"""
+Use graph_stock: the method that represente graphicaly the differente indicators associate to stock tickers
 
-""" graph_stock: the method that represente graphicaly the differente indicators associate to stock tickers
-
-Params:
-------
-indicators: 1: open, 2: high, 3: low, 4: close, 5 : volume
-
-Usage:
-------
+```python
+>>> from stock_transform import stock_preprocess as stp
 >>> obj_stock.graph_stock(1)
+```
 
-"""
+Use transf_featur_scaling: method of the class Stock_processing that transforms data 
 
-""" feature_scaling: the static method of the class Stock_processing
-
-Params:
-------
-
-df: dataframe of the stock tickers 
-name: name of the indicator or variable 
-type: to indicate the mthod 1:MinMaxScaler or 2:StandardScaler
-
-Usage:
-------
-
-None
-
-"""
-
-"""transf_featur_scaling: method of the class Stock_processing that transforms data 
-
-Params:
-------
-type: indicate 1:MinMaxScaler or 2:StandardScaler by the default is 1
-
-Usage:
-------
-
+```python
+>>> from stock_transform import stock_preprocess as stp
 >>> len(dico_obj_stock)
 >>> data_scaler, fct_scaler = obj_stock.tranf_featur_scaling()
 >>> new_scaler_byobj = data_scaler['datLow']
+```
 
-"""
-
-### Contribution 
+### Contribution`
 Contributions are welcon 
 Notice a bug let us know. 
 Thanks!
