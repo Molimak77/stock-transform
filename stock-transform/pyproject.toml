@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "stock-transform"
+version = "0.0.1"
+description = "Package that provides to do the all necessary transformation to preparing the historical data of the market stock ticker for train of a deep learning model"
+authors = ["Moliere Nguile-Makao <moliere.nguile@gmail.com>"]
+readme = "README.md" 
+homepage = "https://github.com/Molimak77/stock-transform"
+repository = "https://github.com/Molimak77/stock-transform"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+yfinance = "^0.2.36"
+pandas = "^2.2.0"
+numpy = "^1.26.4"
+scikit-learn = "^1.4.0"
+tqdm = "^4.66.2"
+lxml = "^5.1.0"
+plotly = "^5.18.0"
+ujson = "^5.9.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
