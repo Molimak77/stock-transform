@@ -26,14 +26,14 @@ pip install git+https://github.com/jkbr/httpie.git#egg=httpie
 ```
 ### Usage
 
- Use Extra_data_stock : class to provide the method to loading the data from the yahoo finance  
+Use class Extra_data_stock: to provide the method to loading the data from the yahoo finance  
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
 >>> obj_extra_data_stock = stp.Extra_data_stock("AAPL")
 ```
 
-Use the class load_data_stock : the method of the class Extra_data_stock which to provide  load the data of the stock market  
+Use class load_data_stock: the method of the class Extra_data_stock which to provide load the data of the stock market  
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
@@ -52,7 +52,7 @@ load the prediction data (the n last days)
 >>> df.head()
 ```
 
-Use Vector_stock : the class to provide the methodes to manipulate the list of the stock tickers
+Use class Vector_stock : the class to provide the methodes to manipulate the list of the stock tickers
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
@@ -60,7 +60,7 @@ Use Vector_stock : the class to provide the methodes to manipulate the list of t
 >>> objet_vector_stock = stp.Vector_stock(values_list, 4)
 ```
 
-Use Vector_stock : the class that treates the list of the data (stock ticker of the market)
+Use Vector_stock: the class that treates the list of the data (stock ticker of the market)
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
@@ -71,10 +71,10 @@ Use Vector_stock : the class that treates the list of the data (stock ticker of 
 >>> obj[3] = [11, 22, 44, 33]
 >>> print(obj)
 >>> for uu in obj:
-    print(uu)
+         print(uu)
 ```
 
-Use Transform_stock : the class which transforms the data stock as matrix of the aviriables 
+Use Transform_stock: the class which transforms the data stock as matrix of the aviriables 
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
@@ -93,17 +93,18 @@ Use get_y_X_stock: method of the class Transform_stock which extracts the matrix
 
 ```
 
-Use Stock_processing : class which provides transformation of the stock ticker variable 
+Use Stock_processing: class which provides transformation of the stock ticker variable 
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
->>> obj_stock = Stock_processing('AAPL', start="2023-01-01", end_date="2023-03-01")
+>>> obj_stock = stp.Stock_processing('AAPL', start="2023-01-01", end_date="2023-03-01")
 ```
 
 Use stock_market_data: the method of the class Stock_processing to loading the historical data 
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
+>>> obj_stock = stp.Stock_processing('AAPL', start="2023-01-01", end_date="2023-03-01")
 >>> dico_obj_stock = obj_stock.stock_market_data()
 ```
 
@@ -111,6 +112,7 @@ Use graph_stock: the method that represente graphicaly the differente indicators
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
+>>> obj_stock = stp.Stock_processing('AAPL', start="2023-01-01", end_date="2023-03-01")
 >>> obj_stock.graph_stock(1)
 ```
 
@@ -118,7 +120,8 @@ Use transf_featur_scaling: method of the class Stock_processing that transforms 
 
 ```python
 >>> from stock_transform import stock_preprocess as stp
->>> len(dico_obj_stock)
+>>> obj_stock = stp.Stock_processing('AAPL', start="2023-01-01", end_date="2023-03-01")
+>>> len(obj_stock)
 >>> data_scaler, fct_scaler = obj_stock.tranf_featur_scaling()
 >>> new_scaler_byobj = data_scaler['datLow']
 ```
